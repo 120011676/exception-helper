@@ -1,7 +1,6 @@
 package com.github.qq120011676.exception.conntroller;
 
 import com.github.qq120011676.exception.RestfulException;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
