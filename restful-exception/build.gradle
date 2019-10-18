@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'java-library'
 }
 
 group 'com.github.120011676'
@@ -8,4 +8,5 @@ version '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 dependencies {
+    annotationProcessor 'org.projectlombok:lombok:latest.release'
 }
