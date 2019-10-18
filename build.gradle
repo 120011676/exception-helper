@@ -4,3 +4,21 @@
  * This is a general purpose Gradle build.
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds
  */
+
+plugins {
+    id "base"
+}
+
+group = 'com.github.120011676'
+version = '0.0.1-SNAPSHOT'
+description = 'java exception helper'
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
