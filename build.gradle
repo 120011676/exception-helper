@@ -78,8 +78,8 @@ subprojects {
             maven {
                 url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
                 credentials {
-                    username = username
-                    password = password
+                    username = maven_username
+                    password = maven_password
                 }
             }
         }
