@@ -8,5 +8,9 @@ version '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 dependencies {
+    compileOnly 'org.springframework:spring-web:latest.release'
+    compileOnly "org.springframework.boot:spring-boot-starter:latest.release"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:latest.release"
+    compileOnly 'org.projectlombok:lombok:latest.release'
     annotationProcessor 'org.projectlombok:lombok:latest.release'
 }

@@ -5,7 +5,7 @@ public class RestfulRuntimeException extends RestfulException {
         super(code, message);
     }
 
-    public RestfulRuntimeException(int httpCode, String code, String message) {
-        super(httpCode, code, message);
+    public RestfulRuntimeException(int httpStatus, String code, String message) {
+        super(httpStatus, code, message);
     }
 }

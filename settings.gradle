@@ -9,4 +9,3 @@
 
 rootProject.name = 'restful-exception-helper'
 include 'restful-exception'
-include 'restful-exception-controller'
