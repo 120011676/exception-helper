@@ -9,16 +9,22 @@ plugins {
     id "base"
 }
 
-group = 'com.github.120011676'
-version = '0.0.1-SNAPSHOT'
 description = 'java exception helper'
 
 allprojects {
+    group = 'com.github.120011676'
+    version = '0.0.1-SNAPSHOT'
+
     repositories {
         mavenCentral()
     }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
+subprojects {
+    apply plugin: 'java-library'
+    sourceCompatibility = 1.8
 }

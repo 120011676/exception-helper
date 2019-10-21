@@ -1,12 +1,7 @@
 package com.github.qq120011676.exception;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import java.text.MessageFormat;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
 public class RestfulException extends Exception {
     private Integer httpStatus;
     private String code;
@@ -21,5 +16,17 @@ public class RestfulException extends Exception {
         this.httpStatus = httpStatus;
         this.code = code;
         this.message = message;
+    }
+
+    public Integer getHttpStatus() {
+        return httpStatus;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }
