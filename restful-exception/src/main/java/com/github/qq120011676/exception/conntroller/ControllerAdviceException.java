@@ -1,6 +1,6 @@
 package com.github.qq120011676.exception.conntroller;
 
-import com.github.qq120011676.exception.RestfulException;
+import com.github.qq120011676.exception.Restful;
 import com.github.qq120011676.exception.autoconfigure.RestfulExceptionProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +25,11 @@ public class ControllerAdviceException {
         body.put(this.restfulExceptionProperties.getMessageName(), e.getMessage());
         String code = this.restfulExceptionProperties.getDefaultCode();
         int httpStatus = this.restfulExceptionProperties.getDefaultHttpStatus();
-        if (e instanceof RestfulException) {
-            RestfulException restfulException = (RestfulException) e;
-            code = restfulException.getCode();
-            if (!StringUtils.isEmpty(restfulException.getHttpStatus())) {
-                httpStatus = restfulException.getHttpStatus();
+        if (e instanceof Restful) {
+            Restful restful = (Restful) e;
+            code = restful.getCode();
+            if (!StringUtils.isEmpty(restful.getHttpStatus())) {
+                httpStatus = restful.getHttpStatus();
             }
         }
         body.put(this.restfulExceptionProperties.getCodeName(), code);

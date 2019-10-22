@@ -14,4 +14,15 @@ public class RestfulExceptionHelper {
         RestfulExceptionProperties.Message message = this.restfulExceptionProperties.getMessages().get(code);
         return new RestfulException(message.getHttpStatus(), code, message.getMessage());
     }
+
+    public RestfulIOException getRestfulIOException(String code) {
+        RestfulExceptionProperties.Message message = this.restfulExceptionProperties.getMessages().get(code);
+        return new RestfulIOException(message.getHttpStatus(), code, message.getMessage());
+    }
+
+
+    public RestfulRuntimeException getRestfulRuntimeException(String code) {
+        RestfulExceptionProperties.Message message = this.restfulExceptionProperties.getMessages().get(code);
+        return new RestfulRuntimeException(message.getHttpStatus(), code, message.getMessage());
+    }
 }
