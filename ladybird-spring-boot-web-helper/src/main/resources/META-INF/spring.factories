@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.github.qq120011676.exception.autoconfigure.RestFulExceptionAutoConfiguration,\
+com.github.qq120011676.date.autoconfigure.RequestDateFormatAutoconfigure

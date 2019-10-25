@@ -1,4 +1,4 @@
-package com.github.qq120011676.exception.conntroller;
+package com.github.qq120011676.conntroller;
 
 import com.github.qq120011676.exception.Restful;
 import com.github.qq120011676.exception.autoconfigure.RestfulExceptionProperties;

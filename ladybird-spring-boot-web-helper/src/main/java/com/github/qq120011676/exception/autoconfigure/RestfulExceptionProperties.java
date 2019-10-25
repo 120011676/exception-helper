@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.util.Map;
 
 @Data
-@ConfigurationProperties(prefix = "restful-exception")
+@ConfigurationProperties(prefix = "ladybird.restful-exception")
 public class RestfulExceptionProperties {
     private String codeName = "code";
     private String messageName = "message";
