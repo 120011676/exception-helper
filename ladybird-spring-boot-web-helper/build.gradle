@@ -2,6 +2,7 @@ description = 'springboot exception'
 
 dependencies {
     compileOnly 'org.springframework:spring-web:latest.release'
+    compileOnly 'javax.servlet:javax.servlet-api:latest.release'
     compileOnly "org.springframework.boot:spring-boot-starter:latest.release"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:latest.release"
     compileOnly 'org.projectlombok:lombok:latest.release'
