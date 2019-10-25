@@ -1,6 +1,6 @@
-package com.github.qq120011676.exception.autoconfigure;
+package com.github.qq120011676.ladybird.web.exception.autoconfigure;
 
-import com.github.qq120011676.exception.RestfulExceptionHelper;
+import com.github.qq120011676.ladybird.web.exception.RestfulExceptionHelper;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.github.qq120011676.date.autoconfigure;
+package com.github.qq120011676.ladybird.web.date.autoconfigure;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

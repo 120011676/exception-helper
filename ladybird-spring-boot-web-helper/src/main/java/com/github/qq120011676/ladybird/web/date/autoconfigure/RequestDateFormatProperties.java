@@ -1,4 +1,4 @@
-package com.github.qq120011676.date.autoconfigure;
+package com.github.qq120011676.ladybird.web.date.autoconfigure;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

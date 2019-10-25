@@ -1,4 +1,4 @@
-package com.github.qq120011676.exception;
+package com.github.qq120011676.ladybird.web.exception;
 
 import java.text.MessageFormat;
 

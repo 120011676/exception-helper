@@ -1,6 +1,6 @@
-package com.github.qq120011676.exception;
+package com.github.qq120011676.ladybird.web.exception;
 
-import com.github.qq120011676.exception.autoconfigure.RestfulExceptionProperties;
+import com.github.qq120011676.ladybird.web.exception.autoconfigure.RestfulExceptionProperties;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
