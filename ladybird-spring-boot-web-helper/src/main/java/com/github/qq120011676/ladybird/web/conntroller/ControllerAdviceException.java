@@ -21,6 +21,7 @@ public class ControllerAdviceException {
     @ResponseBody
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleException(Exception e) {
+        e.printStackTrace();
         Map<String, Object> body = new HashMap<>();
         body.put(this.restfulExceptionProperties.getMessageName(), e.getMessage());
         String code = this.restfulExceptionProperties.getDefaultCode();
