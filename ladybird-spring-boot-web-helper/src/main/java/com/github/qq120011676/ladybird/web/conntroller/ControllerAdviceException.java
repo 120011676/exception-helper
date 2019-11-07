@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -38,44 +40,54 @@ public class ControllerAdviceException {
             if (!StringUtils.isEmpty(restful.getHttpStatus())) {
                 httpStatus = restful.getHttpStatus();
             }
+        } else if (e instanceof MethodArgumentNotValidException) {
+            MethodArgumentNotValidException methodArgumentNotValidException = (MethodArgumentNotValidException) e;
+            BindingResult bindingResult = methodArgumentNotValidException.getBindingResult();
+            code = getString(body, bindingResult);
         } else if (e instanceof BindException) {
-            code = "parameter_error";
-            StringBuilder message = new StringBuilder();
             BindException bindException = (BindException) e;
-            List<ObjectError> objectErrors = bindException.getAllErrors();
-            List<Map<String, String>> data = new ArrayList<>(objectErrors.size());
-            for (int i = 0; i < objectErrors.size(); i++) {
-                ObjectError objectError = objectErrors.get(i);
-                Map<String, String> map = new HashMap<>(2);
-                if (i > 0) {
-                    message.append(System.lineSeparator());
-                }
-                message.append(objectError.getDefaultMessage());
-                map.put("message", objectError.getDefaultMessage());
-                Object[] objects = objectError.getArguments();
-                if (objects != null) {
-                    StringBuilder field = new StringBuilder();
-                    for (int j = 0; j < objects.length; j++) {
-                        Object object = objects[j];
-                        if (object instanceof MessageSourceResolvable) {
-                            MessageSourceResolvable messageSourceResolvable = (MessageSourceResolvable) object;
-                            if (j > 0) {
-                                field.append(",");
-                            }
-                            field.append(messageSourceResolvable.getDefaultMessage());
-                        }
-                    }
-                    map.put("field", field.toString());
-                }
-                data.add(map);
-            }
-            body.put("data", data);
-            body.put(this.restfulExceptionProperties.getMessageName(), message);
+            code = getString(body, bindException);
         } else if (e instanceof AccessDeniedException) {
             code = "no_authority";
             body.put(this.restfulExceptionProperties.getMessageName(), this.restfulExceptionProperties.getMessages().get(code));
         }
         body.put(this.restfulExceptionProperties.getCodeName(), code);
         return new ResponseEntity<>(body, HttpStatus.valueOf(httpStatus));
+    }
+
+    private String getString(Map<String, Object> body, BindingResult bindingResult) {
+        String code;
+        List<ObjectError> objectErrors = bindingResult.getAllErrors();
+        code = "parameter_error";
+        StringBuilder message = new StringBuilder();
+        List<Map<String, String>> data = new ArrayList<>(objectErrors.size());
+        for (int i = 0; i < objectErrors.size(); i++) {
+            ObjectError objectError = objectErrors.get(i);
+            Map<String, String> map = new HashMap<>(2);
+            if (i > 0) {
+                message.append(System.lineSeparator());
+            }
+            message.append(objectError.getDefaultMessage());
+            map.put("message", objectError.getDefaultMessage());
+            Object[] objects = objectError.getArguments();
+            if (objects != null) {
+                StringBuilder field = new StringBuilder();
+                for (int j = 0; j < objects.length; j++) {
+                    Object object = objects[j];
+                    if (object instanceof MessageSourceResolvable) {
+                        MessageSourceResolvable messageSourceResolvable = (MessageSourceResolvable) object;
+                        if (j > 0) {
+                            field.append(",");
+                        }
+                        field.append(messageSourceResolvable.getDefaultMessage());
+                    }
+                }
+                map.put("field", field.toString());
+            }
+            data.add(map);
+        }
+        body.put("data", data);
+        body.put(this.restfulExceptionProperties.getMessageName(), message);
+        return code;
     }
 }
