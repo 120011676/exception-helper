@@ -9,3 +9,5 @@
 
 rootProject.name = 'ladybird-spring-boot-helper'
 include 'ladybird-spring-boot-web-helper'
+include 'test'
+
