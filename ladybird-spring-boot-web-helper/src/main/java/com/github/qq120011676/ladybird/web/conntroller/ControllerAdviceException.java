@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.annotation.Resource;
-import java.nio.file.AccessDeniedException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +46,7 @@ public class ControllerAdviceException {
         } else if (e instanceof BindException) {
             BindException bindException = (BindException) e;
             code = getString(body, bindException);
-        } else if (e instanceof AccessDeniedException) {
+        } else if ("org.springframework.security.access.AccessDeniedException".equals(e.getClass().getName())) {
             code = "no_authority";
             body.put(this.restfulExceptionProperties.getMessageName(), this.restfulExceptionProperties.getMessages().get(code));
         }
